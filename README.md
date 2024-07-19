@@ -14,10 +14,10 @@
 > 
 > *[arXiv 2110.06864](https://arxiv.org/abs/2110.06864)*
 
-## Demo Links
-| Google Colab Demo | Huggingface Demo |                  YouTube Tutorial                   | Original Paper: ByteTrack |
+## Important Links
+| Google Colab      | Huggingface Demo |                  YouTube Tutorial                   | Original Paper: ByteTrack |
 |:-----------------:|:----------------:|:---------------------------------------------------:|:-------------------------:|
-|[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1bDilg4cmXFa8HCKHbsZ_p16p0vrhLyu0?usp=sharing)|[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/akhaliq/bytetrack)|[![YouTube](https://badges.aleen42.com/src/youtube.svg)](https://youtu.be/QCG8QMhga9k)|[arXiv 2110.06864](https://arxiv.org/abs/2110.06864) |
+|[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]([https://colab.research.google.com/drive/1bDilg4cmXFa8HCKHbsZ_p16p0vrhLyu0?usp=sharing](https://colab.research.google.com/drive/14umpZ2I2fCs8ySDHi2FB7jN_D7sGuLSi?usp=sharing))|[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/akhaliq/bytetrack)|[![YouTube](https://badges.aleen42.com/src/youtube.svg)](https://youtu.be/QCG8QMhga9k)|[arXiv 2110.06864](https://arxiv.org/abs/2110.06864) |
 * Integrated to [Huggingface Spaces](https://huggingface.co/spaces) with [Gradio](https://github.com/gradio-app/gradio).
 
 
@@ -36,50 +36,8 @@ Multi-object tracking (MOT) aims at estimating bounding boxes and identities of 
 |MOT17       | 80.3 | 77.3 | 63.1 | 53.2% | 14.5% | 25491 | 83721 | 2196 | 29.6 |
 |MOT20       | 77.8 | 75.2 | 61.3 | 69.2% | 9.5%  | 26249 | 87594 | 1223 | 13.7 |
 
-### Visualization results on MOT challenge test set
-<img src="assets/MOT17-01-SDP.gif" width="400"/>   <img src="assets/MOT17-07-SDP.gif" width="400"/>
-<img src="assets/MOT20-07.gif" width="400"/>   <img src="assets/MOT20-08.gif" width="400"/>
-
 ## Installation
-### 1. Installing on the host machine
-Step1. Install ByteTrack.
-```shell
-git clone https://github.com/ifzhang/ByteTrack.git
-cd ByteTrack
-pip3 install -r requirements.txt
-python3 setup.py develop
-```
-
-Step2. Install [pycocotools](https://github.com/cocodataset/cocoapi).
-
-```shell
-pip3 install cython; pip3 install 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'
-```
-
-Step3. Others
-```shell
-pip3 install cython_bbox
-```
-### 2. Docker build
-```shell
-docker build -t bytetrack:latest .
-
-# Startup sample
-mkdir -p pretrained && \
-mkdir -p YOLOX_outputs && \
-xhost +local: && \
-docker run --gpus all -it --rm \
--v $PWD/pretrained:/workspace/ByteTrack/pretrained \
--v $PWD/datasets:/workspace/ByteTrack/datasets \
--v $PWD/YOLOX_outputs:/workspace/ByteTrack/YOLOX_outputs \
--v /tmp/.X11-unix/:/tmp/.X11-unix:rw \
---device /dev/video0:/dev/video0:mwr \
---net=host \
--e XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR \
--e DISPLAY=$DISPLAY \
---privileged \
-bytetrack:latest
-```
+Open the linked file in Important Links
 
 ## Data preparation
 
@@ -270,8 +228,7 @@ for image in images:
 You can get the tracking results in each frame from 'online_targets'. You can refer to [mot_evaluators.py](https://github.com/ifzhang/ByteTrack/blob/main/yolox/evaluators/mot_evaluator.py) to pass the detection results to BYTETracker.
 
 ## Demo
-
-<img src="assets/palace_demo.gif" width="600"/>
+The code of Demo is located in ipnyb file in Colab. Enjoy it!
 
 ```shell
 cd <ByteTrack_HOME>
